@@ -6,7 +6,7 @@ export default function Header() {
     <header>
       <Navbar />
       <Link to="/">
-      <h1>NC News</h1>
+      <h1 className="title is-1">NC News</h1>
       </Link>
     </header>
   );

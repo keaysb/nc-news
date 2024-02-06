@@ -1,28 +1,28 @@
 import { capitaliseFirstLetter } from "../../utils/capitaliseFirstLetter";
+import { formatDate } from "../../utils/formatDate";
 
 export default function ArticleItem({ article }) {
-  const date = new Date(article.created_at);
-  const options = {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-  };
-  const dateFormat = new Intl.DateTimeFormat("en-GB", options).format(date);
-
   return (
+
+    <div className="column is-one-third">
+
     <li className="article-item">
-      {console.log(article)}
-      <div className="article-text">
-      <h3>{article.title}</h3>
-      <p>{capitaliseFirstLetter(article.topic)}</p>
-      <p>{`By: ${article.author}`}</p>
-      <p>{dateFormat}</p>
-      </div>
-      <div className="article-image">
-      <img src={article.article_img_url} alt={`${article.title}`} />
-      </div>
+        <div className="card">
+          <div className="card-image">
+            <figure className="image is-4by3">
+              <img src={article.article_img_url} alt={`${article.title}`} />
+            </figure>
+          </div>
+          <div className="card-content">
+            <p className="subtitle is-6">
+              {capitaliseFirstLetter(article.topic)}
+            </p>
+            <h3 className="title is-3">{article.title}</h3>
+            <p>{`By: ${article.author}`}</p>
+            <time>{formatDate(article.created_at)}</time>
+          </div>
+        </div>
     </li>
+      </div>
   );
 }
