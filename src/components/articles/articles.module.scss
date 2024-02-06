@@ -1,7 +1,8 @@
 @import "./node_modules/bulma/sass/utilities/mixins";
 
 .section-all-articles{
-  margin : 3rem
+  padding : 3rem;
+
 }
 
 .list-all-articles {
@@ -11,13 +12,8 @@
   display: flex;
   width: 100%;
   flex-wrap: wrap;
-}
 
-// .title{
-//   @include touch {
-//     font-size: 10px;
-//   }
-// }
+}
 
 .card {
 margin-bottom: 2rem;
