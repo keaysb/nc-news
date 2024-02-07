@@ -1,0 +1,57 @@
+@import "./node_modules/bulma/sass/utilities/mixins";
+$breakpoint: 415px;
+
+#article {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  padding-right: 12rem;
+  padding-left: 12rem;
+
+  @include touch {
+    padding-top: 1rem;
+    padding-right: 4rem;
+    padding-left: 4rem;
+  }
+
+  @include mobile {
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+  }
+}
+
+.article-section-info {
+  margin-bottom: 3rem;
+  width: 75%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.img {
+  max-width: 100%;
+  max-height: auto;
+  margin-bottom: 1rem;
+}
+
+#title-responsive {
+  @include mobile {
+    font-size: 1.5rem;
+  }
+}
+
+.author-votes-div {
+  .text {
+    display: inline;
+    @include touch {
+      font-size: 1.1rem;
+    }
+  }
+  @include touch {
+    padding-bottom: 0.5rem;
+  }
+  padding-bottom: 1rem;
+}
+
+.votes {
+  float: right;
+}
