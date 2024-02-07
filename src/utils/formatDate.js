@@ -1,4 +1,7 @@
 export function formatDate (dateStr) {
+  if (!dateStr){
+    return;
+}
     const date = new Date(dateStr);
     const options = {
       year: "numeric",

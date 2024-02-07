@@ -1,0 +1,23 @@
+.section-all-articles {
+  padding: 3rem;
+}
+
+.list-all-articles {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.article-item:hover {
+  .title {
+    text-decoration: underline;
+    color: rgb(195, 13, 13);
+  }
+}
+
+.card {
+  margin-bottom: 2rem;
+}

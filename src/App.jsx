@@ -1,21 +1,30 @@
-import { useState } from 'react'
-import './App.css'
-import Header from './components/header/Header'
-import AllArticles from './components/articles/AllArticles'
-import { Routes, Route } from 'react-router-dom'
+import { useState } from "react";
+import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import Header from "./components/Header/Header";
+import AllArticles from "./components/AllArticles/AllArticles";
+import ArticlePage from "./components/SingleArticle/articlePage";
 
 function App() {
+  const [currentTopic, setCurrentTopic] = useState(null);
 
   return (
     <>
-      <Header />
+      <Header currentTopic={currentTopic} />
       <main>
         <Routes>
-          <Route path="/" element={<AllArticles />}/>
+          <Route
+            path="/"
+            element={<AllArticles setCurrentTopic={setCurrentTopic} />}
+          />
+          <Route
+            path="/articles/:article_id"
+            element={<ArticlePage setCurrentTopic={setCurrentTopic} />}
+          />
         </Routes>
       </main>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
