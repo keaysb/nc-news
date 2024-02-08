@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getArticlesByArticleID } from "../../utils/getApi";
+import { apiCall } from "../../utils/apiCall";
 import articlePageStyles from "./articlePage.module.scss";
-import IsLoading from "../isLoading/IsLoading";
+import IsLoading from "../IsLoading/IsLoading";
 import { formatDate } from "../../utils/formatDate";
 import { ErrorHandler } from "../ErrorHandler/ErrorHandler";
 
@@ -10,27 +10,33 @@ export default function ArticlePage({ setCurrentTopic }) {
   const { article_id } = useParams();
   const [currentArticle, setCurrentArticle] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null)
+  const [error, setError] = useState(null);
   useEffect(() => {
     setIsLoading(true);
     setCurrentTopic(null);
-    getArticlesByArticleID(article_id).then(({ article }) => {
-      setCurrentArticle(article);
-      setCurrentTopic(article.topic);
-    })
-    .catch(err => {
-      setIsLoading(false);
-      setError({ err });
-    });
-    setIsLoading(false);
+
+    apiCall()
+      .get(`articles/${article_id}`)
+      .then(({ data: { article } }) => {
+        setCurrentArticle(article);
+        setCurrentTopic(article.topic);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        setIsLoading(false);
+        setError({ err });
+      });
   }, [article_id]);
+
   return (
     <>
-      {!error && <article
-        id={`${articlePageStyles.article}`}
-        className={`section is-large`}
-      >
-        <section>
+      {isLoading && <IsLoading />}
+      {error && <ErrorHandler error={error} />}
+      {!isLoading && (
+        <article
+          id={`${articlePageStyles.article}`}
+          className={`section is-large`}
+        >
           <h2
             id={articlePageStyles["title-responsive"]}
             className={`title is-2 has-text-centered`}
@@ -59,10 +65,8 @@ export default function ArticlePage({ setCurrentTopic }) {
           <div className="content is-medium">
             <p>{currentArticle.body}</p>
           </div>
-        </section>
-      </article>}
-      {isLoading && <IsLoading />}
-      {error && <ErrorHandler error={error} />}
+        </article>
+      )}
     </>
   );
 }
