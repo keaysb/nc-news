@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { getArticles } from "../../utils/getApi";
+import axios from "axios";
+import { apiCall } from "../../utils/apiCall";
 import ArticleItem from "./ArticleItem";
 import articleStyles from "./articles.module.scss";
 import { ErrorHandler } from "../ErrorHandler/ErrorHandler";
-import IsLoading from "../isLoading/IsLoading";
+import IsLoading from "../IsLoading/IsLoading";
 
 export default function AllArticles({ setCurrentTopic }) {
   const [allArticles, setAllArticles] = useState([]);
@@ -13,8 +14,10 @@ export default function AllArticles({ setCurrentTopic }) {
   useEffect(() => {
     setIsLoading(true);
     setCurrentTopic(null);
-    getArticles()
-      .then(({ articles }) => {
+
+    apiCall()
+      .get("articles")
+      .then(({ data: { articles } }) => {
         setAllArticles(articles);
         setIsLoading(false);
         setError(null);
@@ -27,6 +30,8 @@ export default function AllArticles({ setCurrentTopic }) {
 
   return (
     <>
+      {isLoading && <IsLoading />}
+      {error && <ErrorHandler error={error} />}
       <section
         className={`section-all-articles ${articleStyles["section-all-articles"]}`}
       >
@@ -34,14 +39,12 @@ export default function AllArticles({ setCurrentTopic }) {
           <ul
             className={`list-all-articles ${articleStyles["list-all-articles"]}`}
           >
-            {allArticles.map((article, index) => {
+            {allArticles.map((article) => {
               return <ArticleItem article={article} key={article.article_id} />;
             })}
           </ul>
         </div>
-        {isLoading && <IsLoading />}
       </section>
-      {error && <ErrorHandler error={error} />}
     </>
   );
 }
