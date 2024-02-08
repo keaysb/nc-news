@@ -1,4 +1,7 @@
 export function ErrorHandler (error) {
+    if(!error){
+        return;
+    }
     const {error : {err : {message}}} = error
    const {error : {err : {response : {status}}}} = error
 

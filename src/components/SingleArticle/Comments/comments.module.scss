@@ -1,0 +1,38 @@
+@import "./node_modules/bulma/sass/utilities/mixins";
+
+.all-comments {
+  background-color: #f9f9f9;
+
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
+
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  margin-right: 12rem;
+  margin-left: 12rem;
+
+  @include touch {
+    margin-top: 1rem;
+    margin-right: 4rem;
+    margin-left: 4rem;
+  }
+
+  @include mobile {
+    margin-right: 1.5rem;
+    margin-left: 1.5rem;
+  }
+}
+
+.votes{
+    display: flex;
+    align-items: center;
+    gap: 0.1rem;
+}
+
+#comment-body{
+    @include touch {
+        font-size: 0.9rem;
+      }
+}
