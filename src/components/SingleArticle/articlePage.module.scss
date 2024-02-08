@@ -55,3 +55,9 @@ $breakpoint: 415px;
 .votes {
   float: right;
 }
+
+#article-body{
+  @include touch {
+    font-size: 1rem;
+  }
+}
