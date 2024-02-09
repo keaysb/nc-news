@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { apiCall } from "../../utils/apiCall";
 import ArticleItem from "./ArticleItem";
 import articleStyles from "./articles.module.scss";
-import { ErrorHandler } from "../ErrorHandler/ErrorHandler";
+import  ErrorHandler  from "../ErrorHandler/ErrorHandler";
 import IsLoading from "../IsLoading/IsLoading";
 
 export default function AllArticles({ setCurrentTopic }) {

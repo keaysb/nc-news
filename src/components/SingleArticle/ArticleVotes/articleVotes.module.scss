@@ -1,0 +1,53 @@
+.button {
+  all: unset;
+}
+
+
+#center-para{
+  align-items: center;
+  display: flex;
+  margin-bottom: 0.2rem;
+}
+.button {
+  align-items: center;
+  display: flex;
+}
+.heart {
+  align-items: center;
+  display: flex;
+}
+
+.heart:hover {
+  color: black;
+}
+
+.outline-heart {
+  align-items: center;
+  display: flex;
+}
+
+.outline-heart:hover {
+  color: red;
+}
+
+.heart {
+  color: red;
+}
+
+.white-dislike {
+  color: grey;
+  align-items: center;
+  display: flex;
+}
+.white-dislike:hover {
+  color: black;
+}
+
+.black-dislike {
+  color: black;
+  align-items: center;
+  display: flex;
+}
+.black-dislike:hover {
+  color: grey;
+}

@@ -52,12 +52,23 @@ $breakpoint: 415px;
   padding-bottom: 1rem;
 }
 
-.votes {
-  float: right;
+
+
+.author-votes-div {
+  .votes{
+    float: right;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
 }
 
-#article-body{
+#article-body {
   @include touch {
     font-size: 1rem;
   }
+}
+.button{
+  all: unset
 }

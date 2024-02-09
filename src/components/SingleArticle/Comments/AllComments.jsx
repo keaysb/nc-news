@@ -3,7 +3,7 @@ import { apiCall } from "../../../utils/apiCall";
 import SingleComment from "./SingleComment";
 import commentStyles from "./comments.module.scss";
 import IsLoading from "../../IsLoading/IsLoading";
-import { ErrorHandler } from "../../ErrorHandler/ErrorHandler";
+import  ErrorHandler  from "../../ErrorHandler/ErrorHandler";
 
 
 export default function Comments({ article_id }) {
@@ -11,7 +11,6 @@ export default function Comments({ article_id }) {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   
-
   useEffect(() => {
     setIsLoading(true);
     apiCall()
@@ -25,11 +24,13 @@ export default function Comments({ article_id }) {
         setError({ err });
       });
   }, [article_id]);
+
   return (
     <>
       {isLoading && <IsLoading />}
       {error && <ErrorHandler error={error} />}
       <section className={`all-comments ${commentStyles["all-comments"]}`}>
+        <h3 id={commentStyles["title-responsive"]} className="title is-5">{allComments.length} Comments:</h3>
         {allComments.map((comment) => {
           return <SingleComment key={comment.comment_id} comment={comment} />;
         })}

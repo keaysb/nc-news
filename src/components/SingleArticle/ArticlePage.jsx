@@ -4,14 +4,16 @@ import { apiCall } from "../../utils/apiCall";
 import articlePageStyles from "./articlePage.module.scss";
 import IsLoading from "../IsLoading/IsLoading";
 import { formatDate } from "../../utils/formatDate";
-import { ErrorHandler } from "../ErrorHandler/ErrorHandler";
+import  ErrorHandler  from "../ErrorHandler/ErrorHandler";
 import AllComments from "./Comments/AllComments";
+import ArticleVotes from "./ArticleVotes/ArticleVotes";
 
-export default function ArticlePage({ setCurrentTopic }) {
+export default function ArticlePage({ setCurrentTopic, setStopScroll }) {
   const { article_id } = useParams();
   const [currentArticle, setCurrentArticle] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+
   useEffect(() => {
     setIsLoading(true);
     setCurrentTopic(null);
@@ -29,11 +31,13 @@ export default function ArticlePage({ setCurrentTopic }) {
       });
   }, [article_id]);
 
+
+
   return (
     <>
       {isLoading && <IsLoading />}
       {error && <ErrorHandler error={error} />}
-      {!isLoading && (
+      {(!isLoading && !error) && (
         <>
           <article
             id={`${articlePageStyles.article}`}
@@ -56,19 +60,23 @@ export default function ArticlePage({ setCurrentTopic }) {
                 <p className={`subtitle is-5 ${articlePageStyles.text}`}>
                   By: {currentArticle.author}
                 </p>
-                <p
-                  className={`subtitle is-5 ${articlePageStyles.votes} ${articlePageStyles.text}`}
+
+                <div
+                  className={`${articlePageStyles.votes} ${articlePageStyles.text}`}
                 >
-                  Votes: {currentArticle.votes}
-                </p>
+                  <ArticleVotes article_id={article_id} currentArticle={currentArticle} setCurrentArticle={setCurrentArticle} setStopScroll={setStopScroll}/>
+                </div>
               </div>
               <p>{formatDate(currentArticle.created_at)}</p>
             </div>
-            <div id={articlePageStyles["article-body"]} className={`content is-medium`}>
+            <div
+              id={articlePageStyles["article-body"]}
+              className={`content is-medium`}
+            >
               <p>{currentArticle.body}</p>
             </div>
           </article>
-          <AllComments article_id={article_id}/>
+          <AllComments article_id={article_id} />
         </>
       )}
     </>

@@ -4,14 +4,17 @@ import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import AllArticles from "./components/AllArticles/AllArticles";
 import ArticlePage from "./components/SingleArticle/ArticlePage";
+import errorHandlerStyles from "./components/ErrorHandler/errorHandler.module.scss";
 
 function App() {
   const [currentTopic, setCurrentTopic] = useState(null);
+  const [stopScroll, setStopScroll] = useState("scrollTrue")
+
 
   return (
     <>
-      <Header currentTopic={currentTopic} />
-      <main>
+      <Header currentTopic={currentTopic} stopScroll={stopScroll}/>
+      <main className={errorHandlerStyles[stopScroll]}>
         <Routes>
           <Route
             path="/"
@@ -19,7 +22,7 @@ function App() {
           />
           <Route
             path="/articles/:article_id"
-            element={<ArticlePage setCurrentTopic={setCurrentTopic} />}
+            element={<ArticlePage setCurrentTopic={setCurrentTopic} setStopScroll={setStopScroll} />}
           />
         </Routes>
       </main>

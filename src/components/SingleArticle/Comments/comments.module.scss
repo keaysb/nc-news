@@ -25,6 +25,12 @@
   }
 }
 
+#title-responsive {
+  @include mobile {
+    font-size: 1.15rem;
+  }
+}
+
 .votes{
     display: flex;
     align-items: center;
