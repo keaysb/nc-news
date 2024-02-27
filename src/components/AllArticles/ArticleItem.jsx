@@ -5,7 +5,7 @@ import articleStyles from "./articles.module.scss";
 
 export default function ArticleItem({ article }) {
   return (
-    <div className="column is-one-fourth-widescreen is-one-third-desktop is-half-tablet is-full-mobile">
+    <div className="column is-one-third-desktop is-half-tablet is-full-mobile">
       <Link to={`/articles/${article.article_id}`}>
         <li className={`article-item ${articleStyles["article-item"]}`}>
           <div className="card">
@@ -15,14 +15,14 @@ export default function ArticleItem({ article }) {
               </figure>
             </div>
             <div className="card-content">
-              <p className="subtitle is-6">
+              <p className={`subtitle is-6 ${articleStyles["subtitle"]}`}>
                 {capitaliseFirstLetter(article.topic)}
               </p>
-              <h2 className={`title is-3 ${articleStyles["title"]}`}>
+              <h2 className={`title is-5 ${articleStyles["title"]}`}>
                 {article.title}
               </h2>
-              <p>{`By: ${article.author}`}</p>
-              <time>{formatDate(article.created_at)}</time>
+              <p className={articleStyles["subtitle"]}>{`By: ${article.author}`}</p>
+              <time className={articleStyles["time"]}>{formatDate(article.created_at)}</time>
             </div>
           </div>
         </li>

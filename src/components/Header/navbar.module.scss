@@ -1,0 +1,84 @@
+@import "./node_modules/bulma/sass/utilities/initial-variables.sass";
+// $navbar-breakpoint: 0;
+@import "./node_modules/bulma/bulma.sass";
+
+.all-navbar {
+  display: flex;
+  margin-top: 1rem;
+  @include touch{
+    overflow-x: hidden;
+  }
+  .navbar-brand {
+    display: flex;
+    margin-left: calc(1rem - 8px);
+    align-items: center;
+  }
+  .burger {
+    margin-right: 1rem;
+  }
+  .burger:hover {
+    color: red;
+  }
+  .all-end-navbar {
+    display: flex;
+    align-items: center;
+    margin-right: 3rem;
+    float: right;
+
+    .user-navbar {
+      gap: 0.4rem;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      .element {
+        align-items: center;
+        display: inline-flex;
+      }
+      .icon {
+        display: inline-flex;
+        align-items: center;
+      }
+      .hide-icon {
+        display: none;
+      }
+      .p {
+        color: black;
+        display: inline-flex;
+        align-items: center;
+      }
+      .remove-padding{
+        @include touch{
+            padding-left: 0.5rem;
+        }
+      }
+      .remove-padding:hover{
+        .change-user{
+          color: rgb(195, 13, 13);
+        }
+      }
+
+    }
+    .no-user-icon {
+      color: black;
+      display: inline-flex;
+      align-items: center;
+      padding-right: 0.5rem;
+    }
+    .user-navbar:hover {
+      .p {
+        color: rgb(195, 13, 13);
+      }
+      .no-user-icon {
+        display: inline-flex;
+        color: rgb(195, 13, 13);
+        align-items: center;
+        padding-right: 0.5rem;
+      }
+      @include touch {
+        .p-current-user {
+          color: black;
+        }
+      }
+    }
+  }
+}
