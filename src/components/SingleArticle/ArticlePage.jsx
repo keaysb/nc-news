@@ -17,6 +17,7 @@ export default function ArticlePage({ setCurrentTopic, setStopScroll }) {
   useEffect(() => {
     setIsLoading(true);
     setCurrentTopic(null);
+    setError(null)
 
     apiCall()
       .get(`articles/${article_id}`)

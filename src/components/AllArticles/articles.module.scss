@@ -1,5 +1,15 @@
+@import "./node_modules/bulma/sass/utilities/mixins";
+$breakpoint: 426px;
+
 .section-all-articles {
   padding: 3rem;
+  @include desktop {
+    padding: 5rem;
+    padding-top: 3rem
+  }
+  @include mobile {
+    padding-top: 2.25rem;
+  }
 }
 
 .list-all-articles {
@@ -15,6 +25,28 @@
   .title {
     text-decoration: underline;
     color: rgb(195, 13, 13);
+  }
+}
+
+.article-item {
+  .title {
+    margin: 0;
+    margin-bottom: 1rem;
+    @include until($breakpoint){
+      font-size: 1rem;
+      margin-bottom: 0.25rem;;
+    }
+  }
+  .subtitle {
+    @include until($breakpoint){
+      font-size: 0.75rem;
+    }
+  }
+  .time{
+    @include until($breakpoint){
+      font-size: 0.75rem;
+      display: flex;
+    }
   }
 }
 

@@ -13,6 +13,8 @@ export default function AllArticles({ setCurrentTopic }) {
   useEffect(() => {
     setIsLoading(true);
     setCurrentTopic(null);
+    setError(null)
+
 
     apiCall()
       .get("articles")
@@ -32,11 +34,11 @@ export default function AllArticles({ setCurrentTopic }) {
       {isLoading && <IsLoading />}
       {error && <ErrorHandler error={error} />}
       <section
-        className={`section-all-articles ${articleStyles["section-all-articles"]}`}
+        className={`${articleStyles["section-all-articles"]}`}
       >
         <div className="columns is-multiline is-centered">
           <ul
-            className={`list-all-articles ${articleStyles["list-all-articles"]}`}
+            className={`${articleStyles["list-all-articles"]}`}
           >
             {allArticles.map((article) => {
               return <ArticleItem article={article} key={article.article_id} />;

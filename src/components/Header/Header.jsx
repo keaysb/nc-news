@@ -8,8 +8,17 @@ export default function Header({ currentTopic, stopScroll }) {
   return (
     <header className={`has-text-centered ${errorHandlerStyles[stopScroll]}`}>
       <Navbar />
-      <Link to="/">
-        <h1 className={`title is-1 ${headerStyles.title}`}>NC News</h1>
+      <Link className={headerStyles.header} to="/">
+        <figure className={`image is-1-by-1 ${headerStyles["container"]}`}>
+          <img
+            className={`is-centered ${headerStyles["img"]}`}
+            src="/northcoders-logo.svg"
+            alt="Northcoders Logo"
+          />
+        </figure>
+        <h1 className={`title is-1 ${headerStyles.title}`}>
+          <span style={{ color: "rgb(244,67,54)" }}>NC</span>&nbsp;News
+        </h1>
       </Link>
       {currentTopic && (
         <>
