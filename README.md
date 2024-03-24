@@ -1,8 +1,54 @@
-# React + Vite
+# [NC News 📰](https://ncodersnews.netlify.app)
+A fully responsive web application allowing users to view and interact with various articles and comments
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**[Deployed Version](https://ncodersnews.netlify.app)**
+> **Note**: May take a while to load initially
 
-Currently, two official plugins are available:
+## Features
+### Current Features
+* View all articles
+* View individual articles
+* Up-vote or Down-vote an article
+* View comments
+* Select user
+* Display error messages
+### Upcoming Features
+* Post new comments
+* Delete comments
+* View articles related to a single topic
+* Sort articles by date, comment count, votes, ascending or descending
+* Pagination
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## [NC News API](https://github.com/keaysb/be-nc-news)
+**[Access API Repository](https://github.com/keaysb/be-nc-news)**
+
+## Running Project Repository Locally
+### Minimum Requirements
+* Node.js Version 20.9.0
+Check your node version by running the following command in your terminal:
+```
+node --version
+```
+
+### Step 1: Clone Repository
+```
+git clone https://github.com/keaysb/nc-news.git
+```
+### Step 2: Navigate to newly created project directory
+```
+cd nc-news
+```
+### Step 3: Install Dependencies
+```
+npm install
+```
+### Step 4: Run application on local server
+```
+npm run dev
+```
+> This application should be running on the server: http://localhost:5173/
+
+## Contact Me
+keays.b@yahoo.com
+
+[Linkedin](https://www.linkedin.com/in/bill-keays/)
