@@ -24,7 +24,7 @@ A fully responsive web application allowing users to view and interact with vari
 
 ## Running Project Repository Locally
 ### Minimum Requirements
-* Node.js Version 20.9.0
+Node.js Version 20.9.0
 Check your node version by running the following command in your terminal:
 ```
 node --version
