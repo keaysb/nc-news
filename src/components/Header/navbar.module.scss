@@ -1,17 +1,74 @@
+@import "./node_modules/bulma/sass/utilities/mixins";
 @import "./node_modules/bulma/sass/utilities/initial-variables.sass";
+
 // $navbar-breakpoint: 0;
 @import "./node_modules/bulma/bulma.sass";
 
+
 .all-navbar {
-  display: flex;
-  margin-top: 1rem;
-  @include touch{
-    overflow-x: hidden;
+  padding-top: 0.5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  @include desktop {
+    padding-left: 3.5rem;
+    padding-right: 3.5rem;
   }
+
+  @include touch {
+    overflow-x: hidden;
+  padding-top: 1rem;
+
+  }
+
+  .container {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    @include touch {
+      width: 64px;
+      height: 64px;
+    }
+
+    .img {
+      width: auto;
+      max-height: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+      mix-blend-mode: multiply;
+    }
+  }
+  .title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 0.2rem;
+    font-size: 2.25rem;
+    @include touch {
+      font-size: 2rem;
+    }
+    @include mobile {
+      font-size: 1.75rem;
+      line-height: 1.5rem;
+    }
+  }
+
   .navbar-brand {
     display: flex;
-    margin-left: calc(1rem - 8px);
     align-items: center;
+  }
+  .navbar-item {
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+  }
+  .navbar-button{
+    align-items: center;
+    justify-content: center;
+    display: flex;
   }
   .burger {
     margin-right: 1rem;
@@ -19,66 +76,26 @@
   .burger:hover {
     color: red;
   }
-  .all-end-navbar {
+
+  .user-navbar {
+    gap: 0.4rem;
     display: flex;
     align-items: center;
-    margin-right: 3rem;
-    float: right;
-
-    .user-navbar {
-      gap: 0.4rem;
-      display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 0.2rem;
+    .element {
       align-items: center;
-      flex-wrap: wrap;
-      .element {
-        align-items: center;
-        display: inline-flex;
-      }
-      .icon {
-        display: inline-flex;
-        align-items: center;
-      }
-      .hide-icon {
-        display: none;
-      }
-      .p {
-        color: black;
-        display: inline-flex;
-        align-items: center;
-      }
-      .remove-padding{
-        @include touch{
-            padding-left: 0.5rem;
-        }
-      }
-      .remove-padding:hover{
-        .change-user{
-          color: rgb(195, 13, 13);
-        }
-      }
-
+      display: inline-flex;
     }
-    .no-user-icon {
+    .p {
       color: black;
       display: inline-flex;
       align-items: center;
-      padding-right: 0.5rem;
     }
-    .user-navbar:hover {
-      .p {
-        color: rgb(195, 13, 13);
-      }
-      .no-user-icon {
-        display: inline-flex;
-        color: rgb(195, 13, 13);
-        align-items: center;
-        padding-right: 0.5rem;
-      }
-      @include touch {
-        .p-current-user {
-          color: black;
-        }
-      }
+  }
+  .user-navbar:hover{
+    .p{
+      color: rgb(195, 13, 13);
     }
   }
 }

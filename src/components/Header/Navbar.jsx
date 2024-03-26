@@ -8,91 +8,154 @@ export default function Navbar() {
   const [isActive, setIsActive] = useState("");
   const [isInvisible, setIsInvisible] = useState("");
 
-
   const handleOnClick = () => {
-    if(isActive === ""){
-        setIsActive("is-active")
-        setIsInvisible("hide-icon")
+    if (isActive === "") {
+      setIsActive("is-active");
+      setIsInvisible("hide-icon");
     } else {
-        setIsActive("")
-        setIsInvisible("")
+      setIsActive("");
+      setIsInvisible("");
     }
-  }
+  };
 
   return (
     <nav
-      className={`navbar is-transparent ${navbarStyles["all-navbar"]}`}
+      className={`navbar has-shadow is-transparent ${navbarStyles["all-navbar"]}`}
       role="navigation"
       aria-label="main navigation"
     >
       {currentUser ? (
         <>
-
           <div className={`navbar-brand ${navbarStyles["navbar-brand"]}`}>
-            <div className={`navbar-burger ${navbarStyles.burger}`} onClick={handleOnClick} data-target="navMenu">
-              <span className={navbarStyles.burger} aria-hidden="true"></span>
-              <span className={navbarStyles.burger} aria-hidden="true"></span>
-              <span className={navbarStyles.burger} aria-hidden="true"></span>
-            </div>
+            <Link to="/">
+              <div className={`navbar-item ${navbarStyles["navbar-item"]}`}>
+                <figure
+                  className={`image is-1-by-1 ${navbarStyles["container"]}`}
+                >
+                  <img
+                    className={`is-centered ${navbarStyles["img"]}`}
+                    src="/northcoders-logo.svg"
+                    alt="Northcoders Logo"
+                  />
+                </figure>
+                <h1 className={`title is-1 ${navbarStyles.title}`}>
+                  <span style={{ color: "rgb(244,67,54)" }}>NC</span>&nbsp;News
+                </h1>
+              </div>
+            </Link>
+
+            <a
+              role="button"
+              className={`navbar-burger ${isActive} ${navbarStyles.burger}`}
+              aria-label="menu"
+              aria-expanded="false"
+              onClick={handleOnClick}
+            >
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a>
           </div>
 
-          <div
-            className={`navbar-menu is-shadowless ${isActive} p-0 ${navbarStyles["navbar-menu"]}`}
-          >
-            <div
-              className={`navbar-end ${navbarStyles["all-end-navbar"]}`}
-            >
-              <div
-                className={`navbar-item has-dropdown is-hoverable ${navbarStyles["user-navbar"]}`}
-              >
-                <p className={`${navbarStyles.element} ${navbarStyles.p} ${navbarStyles["p-current-user"]}`}>
-                 <b>{currentUser.username}</b>
-                </p>
-                <figure className={`${navbarStyles.element} ${navbarStyles.element}`}>
+          <div className={`navbar-menu ${isActive}`}>
+          <div className="navbar-start">
+            </div>
+            <div className="navbar-end">
+              <div className={`navbar-item ${navbarStyles["navbar-item"]}`}>
+                <div className={`navbar-item has-dropdown is-hoverable is-danger ${navbarStyles["navbar-item"]}`}>
+                  <div className={`navbar-link is-danger ${navbarStyles["user-navbar"]} is-hidden-touch`}>
+                    <p
+                      className={`${navbarStyles.element} ${navbarStyles.p}`}
+                    >
+                      <b>{currentUser.username}</b>
+                    </p>
+                    <figure
+                      className={`${navbarStyles.element}`}
+                    >
+                      <img
+                        src={currentUser.avatar_url}
+                        alt={`avatar image for ${currentUser.username}`}
+                      />
+                    </figure>
+                  </div>
 
-                <img
-                  src={currentUser.avatar_url}
-                  alt={`avatar image for ${currentUser.username}`}
-                />
-                </figure>
-                <div className={`${navbarStyles.element} ${navbarStyles.icon} ${navbarStyles[isInvisible]}`}>
-                  <ion-icon name="chevron-down-outline"></ion-icon>
+                  <div className={`navbar-item is-danger ${navbarStyles["user-navbar"]} is-hidden-desktop`}>
+                    <p
+                      className={`${navbarStyles.element} ${navbarStyles.p}`}
+                    >
+                      <b>{currentUser.username}</b>
+                    </p>
+                    <figure
+                      className={`${navbarStyles.element}`}
+                    >
+                      <img
+                        src={currentUser.avatar_url}
+                        alt={`avatar image for ${currentUser.username}`}
+                      />
+                    </figure>
+                  </div>
+
+                  <div className="navbar-dropdown">
+                  <div className={`buttons ${navbarStyles["navbar-button"]}`}>
+                  <Link to="/users">
+                    <a className="button is-danger">
+                      <strong>Change User</strong>
+                    </a>
+                  </Link>
                 </div>
-                <div className="navbar-dropdown is-left">
-                  <div className={`navbar-item is-justify-content-center ${navbarStyles["remove-padding"]}`}>
-                    <Link to="/users">
-                      <p className={`button ${navbarStyles["change-user"]}`}>Change User</p>
-                    </Link>
                   </div>
                 </div>
+                
               </div>
             </div>
           </div>
         </>
       ) : (
         <>
-          <div className={`navbar-brand ${navbarStyles["navbar-brand"]}`} onClick={handleOnClick}>
-            <div className={`navbar-burger burger ${navbarStyles.burger}`}>
-              <span className={navbarStyles.burger} aria-hidden="true"></span>
-              <span className={navbarStyles.burger} aria-hidden="true"></span>
-              <span className={navbarStyles.burger} aria-hidden="true"></span>
-            </div>
-          </div>
-          <div
-            className={`navbar-menu is-shadowless ${isActive} ${navbarStyles["navbar-menu"]}`}
-          >
-            <div
-              className={`navbar-end ${navbarStyles["all-end-navbar"]} is-active`}
+          <div className={`navbar-brand ${navbarStyles["navbar-brand"]}`}>
+            <Link to="/">
+              <div className={`navbar-item ${navbarStyles["navbar-item"]}`}>
+                <figure
+                  className={`image is-1-by-1 ${navbarStyles["container"]}`}
+                >
+                  <img
+                    className={`is-centered ${navbarStyles["img"]}`}
+                    src="/northcoders-logo.svg"
+                    alt="Northcoders Logo"
+                  />
+                </figure>
+                <h1 className={`title is-1 ${navbarStyles.title}`}>
+                  <span style={{ color: "rgb(244,67,54)" }}>NC</span>&nbsp;News
+                </h1>
+              </div>
+            </Link>
+
+            <a
+              role="button"
+              className={`navbar-burger ${isActive} ${navbarStyles.burger}`}
+              aria-label="menu"
+              aria-expanded="false"
+              onClick={handleOnClick}
             >
-              <div className={`navbar-item button ${navbarStyles["user-navbar"]}`}>
-                <Link to="/users">
-                  <div
-                    className={`${navbarStyles.element} ${navbarStyles["no-user-icon"]}`}
-                  >
-                    <ion-icon name="person"></ion-icon>
-                  </div>
-                  <p className={`${navbarStyles.p}`}>Select User</p>
-                </Link>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a>
+          </div>
+
+          <div className={`navbar-menu ${isActive}`}>
+            <div className="navbar-start">
+            </div>
+
+            <div className="navbar-end">
+              <div className="navbar-item">
+                <div className={`buttons ${navbarStyles["navbar-button"]}`}>
+                  <Link to="/users">
+                    <a className="button is-danger">
+                      <strong>Select User</strong>
+                    </a>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
