@@ -1,50 +1,14 @@
 @import "./node_modules/bulma/sass/utilities/mixins";
 
-.subtitle {
-  margin-top: 1rem;
-}
-
-.header{
-  .title {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    line-height: 2rem;
-    font-size: 2.75rem;
-    @include touch {
-      font-size: 2.25rem;
-    }
-    @include mobile{
-      font-size: 2rem;
-      line-height: 1.5rem;
-
-    }
-  }
-  margin: auto;
-  display: flex;
-  width: 100%;
-  flex-wrap: wrap;
-  justify-content: center;
-  .container {
-    width: 96px;
-    height: 96px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    flex-basis: 100%;
-    @include touch {
-      width: 64px;
-      height: 64px;
-    }
+.header {
   
-    .img {
-      width: auto;
-      max-height: 100%;
-      margin-left: auto;
-      margin-right: auto;
-      display: block;
-      mix-blend-mode: multiply;
+  .subtitle {
+    margin-top: 2rem;
+    @include mobile{
+      font-size: 1.2rem;
     }
   }
+
 }
+
 
