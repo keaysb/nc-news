@@ -4,6 +4,7 @@ import SingleComment from "./SingleComment";
 import commentStyles from "./comments.module.scss";
 import IsLoading from "../../IsLoading/IsLoading";
 import ErrorHandler from "../../ErrorHandler/ErrorHandler";
+import PostComment from "./PostComment";
 
 export default function Comments({ article_id }) {
   const [allComments, setAllComments] = useState([]);
@@ -34,6 +35,7 @@ export default function Comments({ article_id }) {
         <h3 id={commentStyles["title-responsive"]} className="title is-5">
           {allComments.length} Comments:
         </h3>
+        <PostComment allComments={allComments} setAllComments={setAllComments}/>
         {allComments.map((comment) => {
           return <SingleComment key={comment.comment_id} comment={comment} />;
         })}

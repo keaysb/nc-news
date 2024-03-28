@@ -24,7 +24,7 @@ export default function Navbar() {
       role="navigation"
       aria-label="main navigation"
     >
-      {currentUser ? (
+      {currentUser.username ? (
         <>
           <div className={`navbar-brand ${navbarStyles["navbar-brand"]}`}>
             <Link to="/">
