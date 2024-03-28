@@ -12,8 +12,8 @@ A fully responsive web application allowing users to view and interact with vari
 * View comments
 * Select user
 * Display error messages
-### Upcoming Features
 * Post new comments
+### Upcoming Features
 * Delete comments
 * View articles related to a single topic
 * Sort articles by date, comment count, votes, ascending or descending
