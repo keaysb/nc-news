@@ -2,9 +2,11 @@ import { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import { UserContext } from "../../Login/UserContext";
 import { apiCall } from "../../../utils/apiCall";
-import postCommentStyles from "./postComment.module.scss"
+import postCommentStyles from "./postComment.module.scss";
+import ErrorHandlerSub from "../../ErrorHandler/ErrorHandlerSub";
 
-export default function PostComment({ allComments, setAllComments }) {
+
+export default function PostComment({ allComments, setAllComments}) {
   const { article_id } = useParams();
   const { currentUser } = useContext(UserContext);
   const [newComment, setNewComment] = useState({
@@ -12,6 +14,9 @@ export default function PostComment({ allComments, setAllComments }) {
     body: "",
   });
   const [isClosed, setIsClosed] = useState(true);
+  const [error, setError] = useState(null);
+  const [errorCounter, setErrorCounter] = useState(0)
+
 
   const handleChange = (event) => {
     setNewComment({ ...newComment, body: event.target.value });
@@ -31,15 +36,22 @@ export default function PostComment({ allComments, setAllComments }) {
         .post(`articles/${article_id}/comments`, newComment)
         .then(({ data: { comment } }) => {
           setAllComments([comment, ...allComments]);
-          console.log(allComments)
+          setNewComment({ ...newComment, body: "" })
+        })
+        .catch((err) => {
+          setError({ err });
+          setErrorCounter(errorCounter + 1)
         });
-      setNewComment({ ...newComment, body: "" });
     }
   };
 
   return (
     <>
-      <form className={`${postCommentStyles["post-comment-form"]}`} onSubmit={handleSubmit}>
+      {error && <ErrorHandlerSub error={error} errorCounter={errorCounter}/>}
+      <form
+        className={`${postCommentStyles["post-comment-form"]}`}
+        onSubmit={handleSubmit}
+      >
         <input
           className="input is-rounded"
           type="text"
@@ -49,12 +61,18 @@ export default function PostComment({ allComments, setAllComments }) {
           onChange={handleChange}
           required
         />
-        <button className={`button is-danger ${postCommentStyles["post-comment-button"]}`} type="submit">
+        <button
+          className={`button is-danger ${postCommentStyles["post-comment-button"]}`}
+          type="submit"
+        >
           Submit
         </button>
       </form>
       {!isClosed && (
-        <article id={`${postCommentStyles["post-comment-error"]}`} className="message is-danger">
+        <article
+          id={`${postCommentStyles["post-comment-error"]}`}
+          className="message is-danger"
+        >
           <div className="message-header">
             <p>Select a user</p>
             <button

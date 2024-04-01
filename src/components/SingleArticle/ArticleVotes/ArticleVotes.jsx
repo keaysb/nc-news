@@ -7,12 +7,13 @@ export default function ArticleVotes({
   article_id,
   currentArticle,
   setCurrentArticle,
-  setStopScroll,
 }) {
   const [isLiked, setIsLiked] = useState(0);
   const [isDisliked, setIsDisliked] = useState(0);
 
   const [error, setError] = useState(null);
+  const [errorCounter, setErrorCounter] = useState(0)
+
 
   const handleSubmitLike = (event) => {
     event.preventDefault();
@@ -32,6 +33,7 @@ export default function ArticleVotes({
           });
           setIsLiked(0);
           setError({ err });
+          setErrorCounter(errorCounter + 1)
         });
     } else if (isDisliked % 2 === 1) {
       setCurrentArticle({ ...currentArticle, votes: currentArticle.votes + 2 });
@@ -48,6 +50,7 @@ export default function ArticleVotes({
           });
           setIsLiked(0);
           setError({ err });
+          setErrorCounter(errorCounter + 1)
         });
     } else {
       setCurrentArticle({ ...currentArticle, votes: currentArticle.votes - 1 });
@@ -64,6 +67,7 @@ export default function ArticleVotes({
           });
           setIsLiked(0);
           setError({ err });
+          setErrorCounter(errorCounter + 1)
         });
     }
   };
@@ -87,6 +91,7 @@ export default function ArticleVotes({
           });
           setIsDisliked(0);
           setError({ err });
+          setErrorCounter(errorCounter + 1)
         });
     } else if (isLiked % 2 === 1) {
       setCurrentArticle({ ...currentArticle, votes: currentArticle.votes - 2 });
@@ -102,6 +107,7 @@ export default function ArticleVotes({
           });
           setIsDisliked(0);
           setError({ err });
+          setErrorCounter(errorCounter + 1)
         });
     } else {
       setCurrentArticle({ ...currentArticle, votes: currentArticle.votes + 1 });
@@ -117,12 +123,13 @@ export default function ArticleVotes({
           });
           setIsDisliked(0);
           setError({ err });
+          setErrorCounter(errorCounter + 1)
         });
     }
   };
   return (
     <>
-      {error && <ErrorHandlerSub error={error} setStopScroll={setStopScroll} />}
+      {error && <ErrorHandlerSub error={error} errorCounter={errorCounter}/>}
       <p id={articleVotesStyles["center-para"]} className={`subtitle is-5`}>
         {currentArticle.votes}
       </p>

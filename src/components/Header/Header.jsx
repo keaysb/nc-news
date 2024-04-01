@@ -1,12 +1,10 @@
-import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 import headerStyles from "./header.module.scss";
-import errorHandlerStyles from "../ErrorHandler/errorHandler.module.scss";
 import { capitaliseFirstLetter } from "../../utils/capitaliseFirstLetter";
 
-export default function Header({ currentTopic, stopScroll }) {
+export default function Header({ currentTopic }) {
   return (
-    <header className={`has-text-centered ${headerStyles.header} ${errorHandlerStyles[stopScroll]}`}>
+    <header className={`has-text-centered ${headerStyles.header}`}>
       <Navbar />
       {currentTopic && (
         <>

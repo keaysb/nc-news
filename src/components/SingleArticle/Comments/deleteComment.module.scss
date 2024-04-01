@@ -1,0 +1,15 @@
+@import "./node_modules/bulma/sass/utilities/mixins";
+
+.single-comment-dropdown{
+    :hover{
+        @include desktop{
+            color:red;
+        }
+    }
+    .single-comment-dropdown-content{
+        padding: 0
+    }
+    .single-comment-dropdown-button{
+        all: unset 
+    }
+}
