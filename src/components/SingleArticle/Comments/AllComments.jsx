@@ -6,7 +6,7 @@ import IsLoading from "../../IsLoading/IsLoading";
 import ErrorHandler from "../../ErrorHandler/ErrorHandler";
 import PostComment from "./PostComment";
 
-export default function Comments({ article_id }) {
+export default function Comments({ article_id}) {
   const [allComments, setAllComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -37,7 +37,7 @@ export default function Comments({ article_id }) {
         </h3>
         <PostComment allComments={allComments} setAllComments={setAllComments}/>
         {allComments.map((comment) => {
-          return <SingleComment key={comment.comment_id} comment={comment} />;
+          return <SingleComment key={comment.comment_id} comment={comment} allComments={allComments} setAllComments={setAllComments}/>;
         })}
       </section>
     </>

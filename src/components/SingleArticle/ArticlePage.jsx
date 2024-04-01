@@ -8,7 +8,7 @@ import  ErrorHandler  from "../ErrorHandler/ErrorHandler";
 import AllComments from "./Comments/AllComments";
 import ArticleVotes from "./ArticleVotes/ArticleVotes";
 
-export default function ArticlePage({ setCurrentTopic, setStopScroll }) {
+export default function ArticlePage({ setCurrentTopic }) {
   const { article_id } = useParams();
   const [currentArticle, setCurrentArticle] = useState({});
   const [isLoading, setIsLoading] = useState(true);
@@ -65,7 +65,7 @@ export default function ArticlePage({ setCurrentTopic, setStopScroll }) {
                 <div
                   className={`${articlePageStyles.votes} ${articlePageStyles.text}`}
                 >
-                  <ArticleVotes article_id={article_id} currentArticle={currentArticle} setCurrentArticle={setCurrentArticle} setStopScroll={setStopScroll}/>
+                  <ArticleVotes article_id={article_id} currentArticle={currentArticle} setCurrentArticle={setCurrentArticle}/>
                 </div>
               </div>
               <p>{formatDate(currentArticle.created_at)}</p>
@@ -77,7 +77,7 @@ export default function ArticlePage({ setCurrentTopic, setStopScroll }) {
               <p>{currentArticle.body}</p>
             </div>
           </article>
-          <AllComments article_id={article_id} />
+          <AllComments article_id={article_id}/>
         </>
       )}
     </>

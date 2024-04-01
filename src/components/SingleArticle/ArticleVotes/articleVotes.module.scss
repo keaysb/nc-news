@@ -1,9 +1,10 @@
+@import "./node_modules/bulma/sass/utilities/mixins";
+
 .button {
   all: unset;
 }
 
-
-#center-para{
+#center-para {
   align-items: center;
   display: flex;
   margin-bottom: 0.2rem;
@@ -18,7 +19,9 @@
 }
 
 .heart:hover {
-  color: black;
+  @include desktop {
+    color: black;
+  }
 }
 
 .outline-heart {
@@ -27,7 +30,9 @@
 }
 
 .outline-heart:hover {
-  color: red;
+  @include desktop {
+    color: red;
+  }
 }
 
 .heart {
@@ -40,7 +45,9 @@
   display: flex;
 }
 .white-dislike:hover {
-  color: black;
+  @include desktop {
+    color: black;
+  }
 }
 
 .black-dislike {
@@ -49,5 +56,7 @@
   display: flex;
 }
 .black-dislike:hover {
-  color: grey;
+  @include desktop {
+    color: grey;
+  }
 }
