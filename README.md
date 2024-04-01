@@ -13,8 +13,8 @@ A fully responsive web application allowing users to view and interact with vari
 * Select user
 * Display error messages
 * Post new comments
-### Upcoming Features
 * Delete comments
+### Upcoming Features
 * View articles related to a single topic
 * Sort articles by date, comment count, votes, ascending or descending
 * Pagination
