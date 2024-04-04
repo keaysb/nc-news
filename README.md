@@ -14,10 +14,9 @@ A fully responsive web application allowing users to view and interact with vari
 * Display error messages
 * Post new comments
 * Delete comments
-### Upcoming Features
 * View articles related to a single topic
+### Upcoming Features
 * Sort articles by date, comment count, votes, ascending or descending
-* Pagination
 
 ## [NC News API](https://github.com/keaysb/be-nc-news)
 **[Access API Repository](https://github.com/keaysb/be-nc-news)**
