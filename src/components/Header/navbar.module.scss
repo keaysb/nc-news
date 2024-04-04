@@ -82,7 +82,9 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    padding-bottom: 0.2rem;
+    @include desktop{
+      padding-bottom: 0.2rem;
+    }
     .element {
       align-items: center;
       display: inline-flex;
@@ -91,6 +93,26 @@
       color: black;
       display: inline-flex;
       align-items: center;
+    }
+  }
+  .navbar-start{
+    @include desktop{
+      margin-left: 1.5rem;
+    }
+    @include touch{
+      .navbar-link{
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+    }
+    .p:hover{
+      color:rgb(195, 13, 13);
+    }
+    .p:focus{
+      color:rgb(195, 13, 13);
+    }
+    .p:active{
+      color:rgb(195, 13, 13);
     }
   }
   .user-navbar:hover{

@@ -4,11 +4,15 @@ import ArticleItem from "./ArticleItem";
 import articleStyles from "./articles.module.scss";
 import  ErrorHandler  from "../ErrorHandler/ErrorHandler";
 import IsLoading from "../IsLoading/IsLoading";
+import { useContext } from "react";
+import { TopicContext } from "../Header/TopicContext";
 
 export default function AllArticles({ setCurrentTopic }) {
   const [allArticles, setAllArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const {currentArticlesTopic} = useContext(TopicContext);
+
 
   useEffect(() => {
     setIsLoading(true);
@@ -17,7 +21,7 @@ export default function AllArticles({ setCurrentTopic }) {
 
 
     apiCall()
-      .get("articles")
+      .get(`articles${currentArticlesTopic}`)
       .then(({ data: { articles } }) => {
         setAllArticles(articles);
         setIsLoading(false);
@@ -27,7 +31,7 @@ export default function AllArticles({ setCurrentTopic }) {
         setIsLoading(false);
         setError({ err });
       });
-  }, []);
+  }, [currentArticlesTopic]);
 
   return (
     <>
