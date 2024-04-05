@@ -4,7 +4,6 @@
 // $navbar-breakpoint: 0;
 @import "./node_modules/bulma/bulma.sass";
 
-
 .all-navbar {
   padding-top: 0.5rem;
   padding-left: 1.5rem;
@@ -16,8 +15,7 @@
 
   @include touch {
     overflow-x: hidden;
-  padding-top: 1rem;
-
+    padding-top: 1rem;
   }
 
   .container {
@@ -65,7 +63,7 @@
     justify-content: center;
     display: flex;
   }
-  .navbar-button{
+  .navbar-button {
     align-items: center;
     justify-content: center;
     display: flex;
@@ -82,7 +80,7 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    @include desktop{
+    @include desktop {
       padding-bottom: 0.2rem;
     }
     .element {
@@ -95,28 +93,33 @@
       align-items: center;
     }
   }
-  .navbar-start{
-    @include desktop{
+  .navbar-dropdown {
+    @include touch {
+      padding: 0;
+    }
+  }
+  .navbar-start {
+    @include desktop {
       margin-left: 1.5rem;
     }
-    @include touch{
-      .navbar-link{
+    @include touch {
+      .navbar-link {
         padding-left: 1.5rem;
         padding-right: 1.5rem;
       }
     }
-    .p:hover{
-      color:rgb(195, 13, 13);
+    .p:hover {
+      color: rgb(195, 13, 13);
     }
-    .p:focus{
-      color:rgb(195, 13, 13);
+    .p:focus {
+      color: rgb(195, 13, 13);
     }
-    .p:active{
-      color:rgb(195, 13, 13);
+    .p:active {
+      color: rgb(195, 13, 13);
     }
   }
-  .user-navbar:hover{
-    .p{
+  .user-navbar:hover {
+    .p {
       color: rgb(195, 13, 13);
     }
   }
