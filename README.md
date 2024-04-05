@@ -5,7 +5,6 @@ A fully responsive web application allowing users to view and interact with vari
 > **Note**: May take a while to load initially
 
 ## Features
-### Current Features
 * View all articles
 * View individual articles
 * Up-vote or Down-vote an article
