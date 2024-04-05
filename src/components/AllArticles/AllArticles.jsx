@@ -6,13 +6,16 @@ import  ErrorHandler  from "../ErrorHandler/ErrorHandler";
 import IsLoading from "../IsLoading/IsLoading";
 import { useContext } from "react";
 import { TopicContext } from "../Header/TopicContext";
+import { SortContext } from "../Header/SortContext";
+import { OrderContext } from "../Header/OrderContext";
 
 export default function AllArticles({ setCurrentTopic }) {
   const [allArticles, setAllArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const {currentArticlesTopic} = useContext(TopicContext);
-
+  const {currentSort} = useContext(SortContext)
+  const {currentOrder} = useContext(OrderContext)
 
   useEffect(() => {
     setIsLoading(true);
@@ -21,7 +24,7 @@ export default function AllArticles({ setCurrentTopic }) {
 
 
     apiCall()
-      .get(`articles${currentArticlesTopic}`)
+      .get(`articles?${currentArticlesTopic}&${currentSort}&${currentOrder}`)
       .then(({ data: { articles } }) => {
         setAllArticles(articles);
         setIsLoading(false);
@@ -31,7 +34,7 @@ export default function AllArticles({ setCurrentTopic }) {
         setIsLoading(false);
         setError({ err });
       });
-  }, [currentArticlesTopic]);
+  }, [currentArticlesTopic, currentSort, currentOrder]);
 
   return (
     <>

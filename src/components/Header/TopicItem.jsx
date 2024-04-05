@@ -4,15 +4,15 @@ import { TopicContext } from "./TopicContext"
 import navbarStyles from "./navbar.module.scss";
 import { Link } from "react-router-dom";
 
-export default function TopicItem({topic, isDropdownHidden}){
+export default function TopicItem({topic, isDropdownHiddenTopics}){
     const {setCurrentArticlesTopic} = useContext(TopicContext);
     
     const handleOnClick = () => {
-        setCurrentArticlesTopic(`?topic=${topic.slug}`)
+        setCurrentArticlesTopic(`topic=${topic.slug}`)
     }
 
     return (
-    <Link className={`navbar-item ${navbarStyles.p} ${isDropdownHidden}`} onClick={handleOnClick} to="/">
+    <Link className={`navbar-item ${navbarStyles.p} ${isDropdownHiddenTopics}`} onClick={handleOnClick} to="/">
         {capitaliseFirstLetter(topic.slug)}
     </Link>
     )
